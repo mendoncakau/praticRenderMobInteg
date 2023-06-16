@@ -24,9 +24,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Render Deploy Action
-      uses: johnbeynon/render-deploy-action@v0.0.8
-      with:
-        service-id: ${{secrets.RENDER_ID}}
-        api-key: ${{secrets.RENDER_KEY}}
-        deploy-url: ${{ secrets.RENDER_URL_PREFIX }}/DEV
+    - name: Deploy to RENDER
+      run: |
+        export RENDER_URL="${{ secrets.RENDER_URL_PREFIX }}/DEV"
+        echo $RENDER_URL
+        # Use the RENDER_URL variable in your deployment process
